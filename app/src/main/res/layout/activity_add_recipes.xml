@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary"
+    >
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/backbtn"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="35dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:textColor="@color/black"
+        android:fontFamily="@font/sfprorounded"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_marginTop="-3dp"
+        android:layout_marginStart="9dp"
+        android:layout_toRightOf="@+id/backBtn"
+        android:layout_alignTop="@+id/backBtn"
+        />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/addImage"
+        android:layout_width="361dp"
+        android:layout_height="170dp"
+        app:riv_corner_radius="16dp"
+        android:src="@drawable/cover"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/backBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        />
+
+    <TextView
+        android:id="@+id/tvnamamakanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Makanan"
+        android:layout_below="@+id/addImage"
+        android:textSize="17sp"
+        android:textColor="@color/textcolor_add"
+        android:layout_alignStart="@+id/addImage"
+        android:fontFamily="@font/sfprorounded"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        />
+    <EditText
+        android:id="@+id/edtNamaMakanan"
+        android:layout_width="362dp"
+        android:layout_height="52dp"
+        android:textSize="15sp"
+        android:hint="Masukkan nama makanan"
+        android:textColorHint="@color/hintcolor"
+        android:paddingStart="27dp"
+        android:elevation="3dp"
+        android:fontFamily="@font/sfprorounded"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/background_input_recipe"
+        android:layout_below="@+id/tvnamamakanan"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/tvdeskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Makanan"
+        android:layout_below="@+id/edtNamaMakanan"
+        android:textSize="17sp"
+        android:textColor="@color/textcolor_add"
+        android:layout_alignStart="@+id/addImage"
+        android:fontFamily="@font/sfprorounded"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        />
+
+    <EditText
+        android:id="@+id/edtDeskripsiAddRecipes"
+        android:layout_width="362dp"
+        android:layout_height="72dp"
+        android:textSize="12sp"
+        android:elevation="3dp"
+        android:hint="Jelaska deskripsi makanan"
+        android:textColorHint="@color/hintcolor"
+        android:paddingStart="17dp"
+        android:justificationMode="inter_word"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/sfprorounded"
+        android:background="@drawable/background_inputdeskripsi_recipe"
+        android:layout_below="@+id/tvdeskripsi"
+        android:layout_centerHorizontal="true"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="314dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/edtDeskripsiAddRecipes"
+        android:text="Next"
+        android:elevation="5dp"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:fontFamily="@font/sfprorounded"
+        android:background="@drawable/btn_login"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:orientation="horizontal"
+    android:background="@color/background_primary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/background_item"
+        android:layout_height="102dp"
+        android:paddingStart="17dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="45dp"
+        android:paddingEnd="18dp"
+        android:paddingTop="18dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civFood"
+            android:layout_width="65dp"
+            android:src="@drawable/sample"
+            android:layout_height="65dp"/>
+
+        <TextView
+            android:id="@+id/tvFavFood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pecel Rawon"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/sfprorounded"
+            android:layout_toRightOf="@+id/civFood"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/tvFavFoodDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xxxxxxx"
+            android:textSize="10sp"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:fontFamily="@font/sfprorounded"
+            android:layout_below="@+id/tvFavFood"
+            android:layout_alignStart="@+id/tvFavFood"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_heart"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBaseline="@+id/tvFavFood"
+            android:layout_marginEnd="10dp"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
