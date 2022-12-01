@@ -2,10 +2,13 @@ package com.example.resepdapur.`interface`
 
 
 
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -28,4 +31,7 @@ interface ApiInterface {
     fun regis(
         @Body regisRequest: RegisRequest
     ): retrofit2.Call<LoginResponse>
+
+    @GET("api/me")
+    fun getUser(@Header("Authorization")token: String):Call<>
 }
