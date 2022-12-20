@@ -34,7 +34,7 @@ class AdapterlistItem(private val mlist: List<Recipe>) : RecyclerView.Adapter<Ad
         holder.desc.text = itemViewModel.description
         holder.cvCardItem.setOnClickListener{
             val intent: Intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra("DATA", itemViewModel.id)
+            intent.putExtra("DATA", itemViewModel)
             holder.itemView.context.startActivity(intent)
         }
     }

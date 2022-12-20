@@ -17,20 +17,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
+        val token: String? = intent.getStringExtra("token")
         bottomNavigationView.background = null
-        replaceFragment(HomeFragment())
+        replaceFragment(HomeFragment(), token)
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
-                R.id.navhome-> replaceFragment(HomeFragment())
-                R.id.navlike-> replaceFragment(FavoriteFragment())
+                R.id.navhome-> replaceFragment(HomeFragment(), token)
+                R.id.navlike-> replaceFragment(FavoriteFragment(), token)
             }
                true
         }
     }
 
-    private fun replaceFragment(fragment : Fragment) {
+    private fun replaceFragment(fragment : Fragment, token: String?) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
+        val bundle = Bundle()
+        bundle.putString("token", token)
+        fragment.arguments = bundle
         fragmentTransaction.replace(R.id.frameLayout, fragment)
         fragmentTransaction.commit()
     }

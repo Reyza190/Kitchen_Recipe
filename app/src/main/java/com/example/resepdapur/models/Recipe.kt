@@ -1,7 +1,10 @@
 package com.example.resepdapur.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Recipe(
     @SerializedName("id")
     val id: Int,
@@ -23,4 +26,4 @@ data class Recipe(
 
     @SerializedName("views")
     val views: String
-    )
+) : Parcelable

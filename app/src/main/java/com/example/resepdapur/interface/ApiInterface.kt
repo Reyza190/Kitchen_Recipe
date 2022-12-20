@@ -27,11 +27,12 @@ interface ApiInterface {
         @Body loginRequest: LoginRequest
     ): retrofit2.Call<LoginResponse>
 
-    @POST("api/register")
+    @POST("/api/register")
     fun regis(
         @Body regisRequest: RegisRequest
     ): retrofit2.Call<LoginResponse>
 
-    @GET("api/me")
-    fun getUser(@Header("Authorization")token: String):Call<>
+//    @Headers({ "Content-Type: application/json;charset=UTF-8"}.toString())
+//    @GET("api/me")
+//    fun getUser(@Header("Authorization")token: String):Call<TokenResponse>
 }

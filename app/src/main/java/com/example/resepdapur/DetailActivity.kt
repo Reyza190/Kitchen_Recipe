@@ -22,76 +22,36 @@ import retrofit2.Response
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var cvImage: CircleImageView
-    private lateinit var tvDesription : TextView
+    private lateinit var tvDesription: TextView
     private lateinit var tvJudul: TextView
     private val steps = ArrayList<Step>()
     private val recipes = ArrayList<Recipe>()
     private var recyclerView: RecyclerView? = null
+
+    companion object {
+        val key = "DATA"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         init()
-        val id: Int = intent.getIntExtra("DATA", 0)
-        showDataDetail(id)
+        val data = intent.getParcelableExtra<Recipe>(key)
+        setData(data)
 
     }
 
-    private fun showDataDetail(id : Int) {
-//        recipes.addAll(RetrofitClient.instance.getRecipebyId(id).body()!!.recipes)
+    private fun setData(recipes: Recipe?) {
+        Glide.with(this).load(recipes?.img_id).into(cvImage)
+        tvDesription.text = recipes?.description
+        tvJudul.text = recipes?.title
 
-        RetrofitClient.instance.getRecipebyId(id).enqueue(object : Callback<RecipebyIdResponse>{
-            override fun onResponse(
-                call: Call<RecipebyIdResponse>,
-                response: Response<RecipebyIdResponse>
-            ) {
-                recipes.addAll(listOf(response.body()!!.recipe))
-                steps.addAll(response.body()!!.steps)
-                setData(recipes, steps)
-            }
-
-            override fun onFailure(call: Call<RecipebyIdResponse>, t: Throwable) {
-                Toast.makeText(this@DetailActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
-            }
-
-        })
-
-//        RetrofitClient.instance.getRecipebyId(id).enqueue(object : Callback<RecipeResponse>{
-//            override fun onResponse(
-//                call: Call<RecipeResponse>,
-//                response: Response<RecipeResponse>
-//            ) {
-//                if (response.isSuccessful){
-//                    Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show()
-//                    if (response.body() != null){
-//                        Toast.makeText(applicationContext, "0", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-////                recipes.addAll(response.body()!!.recipes)
-//            }
-//
-//            override fun onFailure(call: Call<RecipeResponse>, t: Throwable) {
-//                Log.e(t.toString(), "error")
-//                Toast.makeText(this@DetailActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
-//        RetrofitClient.instance.getRecipebyId(id).enqueue(object : Callback<RecipeResponse>{
-//            override fun onResponse(
-//                call: Call<RecipeResponse>,
-//                response: Response<RecipeResponse>
-//            ) {
-//                recipes.addAll(response.body()!!.recipes)
-//            }
-//
-//            override fun onFailure(call: Call<RecipeResponse>, t: Throwable) {
-//                Toast.makeText(this@DetailActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
+        recyclerView?.layoutManager = LinearLayoutManager(this)
+        recyclerView?.adapter = AdapterDetail(Data.getSteps())
     }
 
     @SuppressLint("CheckResult")
-    private fun setData(recipes : ArrayList<Recipe>, steps : ArrayList<Step>){
+    private fun setData(recipes: ArrayList<Recipe>, steps: ArrayList<Step>) {
         Glide.with(this).load(recipes.get(0).img_id).into(cvImage)
         tvJudul.text = recipes.get(0).title
         tvDesription.text = recipes.get(0).description
@@ -99,7 +59,7 @@ class DetailActivity : AppCompatActivity() {
         recyclerView!!.adapter = AdapterDetail(steps)
     }
 
-    private fun init(){
+    private fun init() {
         cvImage = findViewById(R.id.circleImageView)
         tvJudul = findViewById(R.id.tvjuduldetail)
         tvDesription = findViewById(R.id.tvDescriptionDetail)
